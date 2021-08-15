@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.book.mapper.BookMapper">
+    <insert id="addBook" parameterType="com.book.pojo.Books">
+        insert into ssmframework.books(bookName, bookCounts, bookBorrow , detail)
+        values (#{bookName} , #{bookCounts} , #{bookBorrow} ,#{detail})
+    </insert>
+
+    <delete id="deleteBookById" parameterType="int">
+        delete
+        from ssmframework.books
+                 where bookID = #{bookID};
+    </delete>
+
+    <update id="updateBook" parameterType="com.book.pojo.Books">
+        update ssmframework.books
+            set bookName = #{bookName} ,bookCounts = #{bookCounts} ,bookBorrow = #{bookBorrow} , detail = #{detail}
+        where bookID = #{bookID};
+    </update>
+
+    <select id="queryBookById" parameterType="int" resultType="com.book.pojo.Books">
+        select *
+        from ssmframework.books where bookID = #{bookID};
+    </select>
+
+    <select id="queryAllBook" resultType="com.book.pojo.Books">
+        select *
+        from ssmframework.books;
+    </select>
+
+    <select id="queryBookLike" resultType="com.book.pojo.Books">
+        select *
+        from ssmframework.books where bookName like concat(concat('%' , #{bookName} , '%'));
+    </select>
+
+    <select id="queryBookId" resultType="com.book.pojo.Books">
+        select *
+        from ssmframework.books where bookName = #{bookName};
+    </select>
+
+    <select id="popularBooks" resultType="com.book.pojo.Books">
+        select *
+        from ssmframework.books order by bookBorrow desc , bookCounts , bookName LIMIT 10;
+    </select>
+</mapper>

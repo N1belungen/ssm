@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.user.mapper.UserMapper">
+    <insert id="registerUser" parameterType="com.user.pojo.User">
+        insert into ssmframework.user(userID, userName, userPwd, userRoot)
+        values (#{userID} , #{userName} , #{userPwd} , #{userRoot});
+    </insert>
+
+    <delete id="deleteUserById">
+        delete
+        from ssmframework.user
+        where userID = #{userID};
+    </delete>
+
+    <update id="updateUser" parameterType="com.user.pojo.User">
+        update ssmframework.user
+        set userName = #{userName} ,userPwd = #{userPwd} ,userRoot = #{userRoot}
+        where userID = #{userID};
+    </update>
+
+    <select id="queryAllUser" resultType="com.user.pojo.User">
+        select *
+        from ssmframework.user;
+    </select>
+
+    <select id="queryUserLike" resultType="com.user.pojo.User">
+        select *
+        from ssmframework.user where userName like concat(concat('%' , #{userName} , '%'));
+    </select>
+    
+    <select id="queryUser" resultType="com.user.pojo.User">
+        select *
+        from ssmframework.user where userName = #{userName};
+    </select>
+
+    <select id="queryUserByID" resultType="com.user.pojo.User">
+        select *
+        from ssmframework.user where userID = #{userID};
+    </select>
+
+    <select id="judgeUserLogin" resultType="com.user.pojo.User">
+        select *
+        from ssmframework.user where userName = #{userName} and userPwd = #{userPwd} ;
+    </select>
+
+    <select id="judgeAdminLogin" resultType="com.user.pojo.User">
+        select *
+        from ssmframework.user where userName = #{userName} and userPwd = #{userPwd} and userRoot = #{userRoot};
+    </select>
+
+    <update id="updateUserPwd">
+        update ssmframework.user
+            set userPwd = #{userPwd}
+        where userName = #{userName};
+    </update>
+</mapper>

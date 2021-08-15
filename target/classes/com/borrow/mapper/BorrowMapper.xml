@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.borrow.mapper.BorrowMapper">
+    <insert id="addBorrow" parameterType="com.borrow.pojo.Borrow">
+        insert into ssmframework.borrow(userID, userName, bookID, bookName, borrowTime, returnTime)
+        values (#{userID} , #{userName} , #{bookID} ,#{bookName} , #{borrowTime} , #{returnTime})
+    </insert>
+
+    <select id="queryBorrow" resultType="com.borrow.pojo.Borrow">
+        select *
+        from ssmframework.borrow where userName = #{userName} and bookName = #{bookName};
+    </select>
+
+    <update id="updateBookNum">
+        update ssmframework.books
+            set bookBorrow = bookBorrow + 1
+        where bookID = #{bookID};
+    </update>
+
+    <select id="queryUserBorrow" resultType="com.borrow.pojo.Borrow">
+        select *
+        from ssmframework.borrow where userName = #{userName};
+    </select>
+
+    <delete id="deleteUserBorrow">
+        delete
+        from ssmframework.borrow
+        where userName = #{userName} and bookID = #{bookID};
+    </delete>
+
+    <update id="returnBook">
+        update ssmframework.books
+            set bookBorrow = bookBorrow - 1
+        where bookID = #{bookID};
+    </update>
+</mapper>
