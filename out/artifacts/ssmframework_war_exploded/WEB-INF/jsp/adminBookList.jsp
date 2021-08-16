@@ -9,7 +9,7 @@
 
 <body>
 <!-- 引入导航栏页面 -->
-<%@include file="header.jsp"%>
+<%@include file="adminHeader.jsp"%>
 
 <div class="container">
     <div class="row clearfix">
@@ -41,6 +41,7 @@
                     <th>书籍数量</th>
                     <th>书籍借阅数量</th>
                     <th>书籍详情</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
 
@@ -53,6 +54,11 @@
                         <td>${book.bookCounts}</td>
                         <td>${book.bookBorrow}</td>
                         <td>${book.detail}</td>
+                        <td>
+                            <a href="${pageContext.request.contextPath}/book/toBookUpdate/${book.bookID}">修改</a>
+                            &nbsp; | &nbsp;
+                            <a href="${pageContext.request.contextPath}/book/bookDelete?id=${book.bookID}">删除</a>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

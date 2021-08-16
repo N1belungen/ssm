@@ -26,7 +26,7 @@
         <form action="${pageContext.request.contextPath}/book/bookNameQuery" method="post" role="form" style="float: right">
             <div class="form-group">
                 <label></label>
-                <input type="text" name="bookName" class="form-control"  placeholder="请输入要查询的书籍名称">
+                <input type="text" name="bookName" class="form-control"  placeholder="请输入要查询的书籍名称" autocomplete="off">
             </div>
             <button type="submit" class="btn btn-primary">查询</button>
         </form>
@@ -41,7 +41,6 @@
                     <th>书籍数量</th>
                     <th>书籍借阅数量</th>
                     <th>书籍详情</th>
-                    <th>操作</th>
                 </tr>
                 </thead>
 
@@ -54,11 +53,6 @@
                         <td>${book.bookCounts}</td>
                         <td>${book.bookBorrow}</td>
                         <td>${book.detail}</td>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/book/toBookUpdate/${book.bookID}">修改</a>
-                            &nbsp; | &nbsp;
-                            <a href="${pageContext.request.contextPath}/book/bookDelete?id=${book.bookID}">删除</a>
-                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

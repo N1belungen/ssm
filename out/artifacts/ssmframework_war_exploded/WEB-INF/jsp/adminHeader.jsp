@@ -26,7 +26,7 @@
                         <li><a href="${pageContext.request.contextPath}/borrow">借阅书籍</a></li>
                         <li><a href="${pageContext.request.contextPath}/bookReturn">归还书籍</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="${pageContext.request.contextPath}/book/bookList">查询书籍</a></li>
+                        <li><a href="${pageContext.request.contextPath}/adminBookList">查询书籍</a></li>
                     </ul>
                 </li>
 

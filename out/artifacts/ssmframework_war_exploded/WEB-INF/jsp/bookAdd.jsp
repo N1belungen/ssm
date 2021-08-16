@@ -27,7 +27,7 @@
 
 <body>
 <!-- 引入导航栏页面 -->
-<%@include file="header.jsp"%>
+<%@include file="adminHeader.jsp"%>
 
 <div class="container">
     <div class="row clearfix">
