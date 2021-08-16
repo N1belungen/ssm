@@ -60,4 +60,16 @@ public class HeaderController {
         model.addAttribute("bookList" , list);
         return "bookBorrow";
     }
+
+    /**
+     * 管理员界面的查询书籍
+     * @param model
+     * @return
+     */
+    @RequestMapping("/adminBookList")
+    public String adminBookList(Model model){
+        List<Books> list = bookService.queryAllBook();
+        model.addAttribute("bookList" , list);
+        return "adminBookList";
+    }
 }
